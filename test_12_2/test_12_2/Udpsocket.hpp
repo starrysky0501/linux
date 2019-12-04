@@ -1,11 +1,11 @@
-//ÊµÏÖÒÔUdpsocketÀà·â×°udp³£ÓÃ²Ù×÷
+//å®ç°ä»¥Udpsocketç±»å°è£…udpå¸¸ç”¨æ“ä½œ
 //#include<iostream>
 //#include<string>
 //#include<errno.h>          //perror
 //
 //#include<sys/socket.h>        
-//#include<netinet/in.h>     //sockaddr_inÕâ¸ö½á¹¹ÌåÔÚÕâ¸öÍ·ÎÄ¼şÀï
-//#include<arpa/inet.h>      //htons,inet_addrº¯ÊıµÄÍ·ÎÄ¼ş
+//#include<netinet/in.h>     //sockaddr_inè¿™ä¸ªç»“æ„ä½“åœ¨è¿™ä¸ªå¤´æ–‡ä»¶é‡Œ
+//#include<arpa/inet.h>      //htons,inet_addrå‡½æ•°çš„å¤´æ–‡ä»¶
 //#include<unistd.h>
 //class Udpsocket
 //{
@@ -28,7 +28,7 @@
 //		struct sockaddr_in addr;
 //		addr.sin_family = AF_INET;
 //		addr.sin_port = htons(port);
-//		addr.sin_addr.s_addr = inet_addr(ip.c_str());              //½«×Ö·û´®µÄµã·ÖÊ®½øÖÆipµØÖ·×ª»¯ÎªÍøÂç×Ö½ÚĞòµÄÕûÊıipµØÖ·
+//		addr.sin_addr.s_addr = inet_addr(ip.c_str());              //å°†å­—ç¬¦ä¸²çš„ç‚¹åˆ†åè¿›åˆ¶ipåœ°å€è½¬åŒ–ä¸ºç½‘ç»œå­—èŠ‚åºçš„æ•´æ•°ipåœ°å€
 //		socklen_t len = sizeof(struct sockaddr_in);
 //		int ret = bind(_sock, (struct sockaddr*)&addr, len);
 //		if (ret<0)
@@ -50,10 +50,10 @@
 //		}
 //		return true;
 //	}
-//	bool Send(std::string &buf, struct sockaddr_in *daddr)     //²»½¨ÒéÊ¹ÓÃstring,Óöµ½\0Í£Ö¹
+//	bool Send(std::string &buf, struct sockaddr_in *daddr)     //ä¸å»ºè®®ä½¿ç”¨string,é‡åˆ°\0åœæ­¢
 //	{
 //		socklen_t len = sizeof(struct sockaddr_in);
-//		int ret = sendto(_sock, buf, buf.size(), 0, (struct sockaddr*)daddr, len);
+//		int ret = sendto(_sock, buf.c_str(), buf.size(), 0, (struct sockaddr*)daddr, len);
 //		if (ret<0)
 //		{
 //			perror("send error");
@@ -71,9 +71,9 @@
 //	int _sock;
 //};
 
-//gg=G:´ÓÊ×ĞĞµ½Î²ĞĞÈ«ÎÄ¶ÔÆë£»gg = shift g
-//inet_addrº¯Êı£º²ÎÊıÊÇchar*,²»ÄÜÊÇstring
-//ÔÚÔçÆÚµÄ32²Ù×÷ÏµÍ³ÖĞ,long¾ÍÊÇ4¸ö×Ö½Ú£¬64Î»µÄÊı¾İÓÃ»§×Ô¼ºÊµÏÖ´ÓÖ÷»ú×Ö½ÚĞò×ª»»µ½ÍøÂç×Ö½ÚĞò
-//htons£º×Ô´øÅĞ¶ÏÎÒÃÇµÄÖ÷»ú×Ö½ÚĞò£¬Èç¹ûÊÇĞ¡¶Ë£¬×ª»¯£»Èç¹ûÊÇ´ó¶Ë£¬Ê²Ã´¶¼²»×ö
-//Êı×ÖµÄ×Ö½ÚĞò×ª»»£ºÖ÷»ú×Ö½ÚĞò×ª»»ÎªÍøÂç×Ö½ÚĞò
+//gg=G:ä»é¦–è¡Œåˆ°å°¾è¡Œå…¨æ–‡å¯¹é½ï¼›gg = shift g
+//inet_addrå‡½æ•°ï¼šå‚æ•°æ˜¯char*,ä¸èƒ½æ˜¯string
+//åœ¨æ—©æœŸçš„32æ“ä½œç³»ç»Ÿä¸­,longå°±æ˜¯4ä¸ªå­—èŠ‚ï¼Œ64ä½çš„æ•°æ®ç”¨æˆ·è‡ªå·±å®ç°ä»ä¸»æœºå­—èŠ‚åºè½¬æ¢åˆ°ç½‘ç»œå­—èŠ‚åº
+//htonsï¼šè‡ªå¸¦åˆ¤æ–­æˆ‘ä»¬çš„ä¸»æœºå­—èŠ‚åºï¼Œå¦‚æœæ˜¯å°ç«¯ï¼Œè½¬åŒ–ï¼›å¦‚æœæ˜¯å¤§ç«¯ï¼Œä»€ä¹ˆéƒ½ä¸åš
+//æ•°å­—çš„å­—èŠ‚åºè½¬æ¢ï¼šä¸»æœºå­—èŠ‚åºè½¬æ¢ä¸ºç½‘ç»œå­—èŠ‚åº
 
